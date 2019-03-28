@@ -61,6 +61,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                                {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Is User Admin') }}</label> --}}
+                            <div class="col-md-8 col-form-label text-md-right">
+                                </span><input type="radio" name="isadmin" value="0" checked> Employee
+                                &emsp;&emsp;&emsp;
+                                <input type="radio" name="isadmin" value="1" > Admin<br>
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
