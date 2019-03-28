@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 </head>
 <body>
     <div id="app">
@@ -76,8 +77,15 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                {{-- @include('include.messages') --}}
+                @yield('content')
+            </div>
         </main>
     </div>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'article-ckeditor' );
+</script>
 </body>
 </html>

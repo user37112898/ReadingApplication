@@ -28,7 +28,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
@@ -39,7 +39,23 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'body' => 'required',
+        ]);        
+        
+        $post = new Post;
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->author = $request->input('author');
+        $post->type = $request->input('type');
+        $post->body = $request->input('body');
+        $post->evaluation = $request->input('evaluation');
+        $post->tags = $request->input('tags');
+        $post->user_id=0;//$post->user_id = auth()->user()->id;
+        $post->save();
+
+        return redirect('/posts')->with('success','Post Created');
     }
 
     /**

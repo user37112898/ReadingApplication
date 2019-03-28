@@ -17,7 +17,8 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{$post->title}}</h5>
-                                <p class="card-text">{{$post->description}}</p>
+                            <p class="card-text">{{$post->description}}</p>
+                            <p>By {{$post->author}} </p>
                                 <a href="#" class="btn btn-primary">Read</a>
                                 <a href="#" class="btn btn-primary">Give Exam</a>
                             </div>

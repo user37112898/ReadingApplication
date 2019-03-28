@@ -17,7 +17,12 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('description');
+            $table->string('author');//
+            $table->boolean('type');//
             $table->longText('body');
+            $table->boolean('evaluation');//
+            $table->string('tags');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
