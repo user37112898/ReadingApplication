@@ -19,8 +19,17 @@
                                 <h5 class="card-title">{{$post->title}}</h5>
                             <p class="card-text">{{$post->description}}</p>
                             <p>By {{$post->author}} </p>
-                                <a href="#" class="btn btn-primary">Read</a>
-                                <a href="#" class="btn btn-primary">Give Exam</a>
+                                
+                                {{-- <a href="#" class="btn btn-primary">Read</a>
+                                <a href="#" class="btn btn-primary">Give Exam</a> --}}
+                                
+                                <div class="d-flex justify-content-center">
+                                    <a href="/posts/{{$post->id}}/edit" class="btn btn-primary mr-3">Edit</a>
+                                    {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST'])!!}
+                                        {{Form::hidden('_method','DELETE')}}
+                                        {{Form::submit('Delete',['class'=>'btn btn-danger ml-3'])}}
+                                    {!!Form::close()!!}
+                                </div>
                             </div>
                             <div class="card-footer text-muted">
                                 {{$post->created_at}}

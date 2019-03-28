@@ -77,7 +77,13 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        //check for correct user
+        // if(auth()->user()->id != $post->user_id){
+        //     return redirect('/posts')->with('error','Unauthorized Access');
+        // }
+        return view('posts.edit')->with('post',$post);  
     }
 
     /**
@@ -89,7 +95,25 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        $post = Post::find($id);
+
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->author = $request->input('author');
+        $post->type = $request->input('type');
+        $post->body = $request->input('body');
+        $post->evaluation = $request->input('evaluation');
+        $post->tags = $request->input('tags');
+        // $post->user_id=0;//$post->user_id = auth()->user()->id;
+
+        $post->save();
+
+        return redirect('/posts')->with('success',$post->title.' Updated');
     }
 
     /**
@@ -100,6 +124,13 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        // if(auth()->user()->id != $post->user_id){
+        //     return redirect('/posts')->with('error','Unauthorized Access');
+        // }
+        $temp = $post->title;
+
+        $post->delete();
+        return redirect('/posts')->with('delete',$temp.' Deleted');
     }
 }
