@@ -11,6 +11,7 @@
                 @if (count($posts)>0)
                     @foreach ($posts as $post)
                     <div class="col-sm-6">
+                        <a href="/posts/{{$post->id}}">
                         <div class="card text-center">
                             <div class="card-header">
                                 Book
@@ -35,6 +36,7 @@
                                 {{$post->created_at}}
                             </div>
                         </div>
+                        </a>
                     </div>
                     @endforeach    
                 @else
