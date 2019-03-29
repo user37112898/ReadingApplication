@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-
 class PostsController extends Controller
 {
+
+    /**
+     * Create a new controller instance
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['index','show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +28,7 @@ class PostsController extends Controller
         // $posts = DB::select('SELECT * FROM posts');
         // $posts = Post::orderBy('title','asc')->get();
         $posts = Post::orderBy('created_at','desc')->paginate(10);
+
         return view('posts.index')->with('posts',$posts);
     }
 
