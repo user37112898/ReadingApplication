@@ -11,10 +11,12 @@
                 @if (count($posts)>0)
                     @foreach ($posts as $post)
                     <div class="col-sm-6">
-                        <a href="/posts/{{$post->id}}">
                         <div class="card text-center">
+                            <?php
+                                $type = $post->type==1?'Book':'Article';
+                            ?>
                             <div class="card-header">
-                                Book
+                                <?php echo $type; ?>
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{$post->title}}</h5>
@@ -22,7 +24,7 @@
                             <p>By {{$post->author}} </p>
                                 
                                 @if (Auth::user()->isadmin==0)
-                                    <a href="#" class="btn btn-primary">Read</a>
+                                    <a href="/posts/{{$post->id}}" class="btn btn-primary">Read</a>
                                     <a href="#" class="btn btn-primary">Give Exam</a>   
                                 @else
                                     <div class="d-flex justify-content-center">
@@ -39,7 +41,6 @@
                                 {{$post->created_at}}
                             </div>
                         </div>
-                        </a>
                     </div>
                     @endforeach    
                 @else

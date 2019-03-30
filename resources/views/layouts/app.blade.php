@@ -24,7 +24,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a href="{{ url('/') }}">
+                <?php 
+                    $link = (Auth::user())?'/posts':'/login';
+                ?>
+                <a href="{{ url ($link) }}">
                     <img src="http://jyoti.co.in/wp-content/uploads/2016/01/jyoti-logo.png" alt="Jyoti CNC">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -34,7 +37,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -55,10 +58,10 @@
                         @else
                             @if (Auth::user()->isadmin==1)
                                 <li class="nav-item">
-                                    <a href="/register" class="nav-link">Register</a>
-                                </li>
-                                <li class="nav-item">
                                     <a href="/posts/create" class="nav-link">Create Post</a>
+                                </li>    
+                                <li class="nav-item">
+                                    <a href="/register" class="nav-link">Register</a>
                                 </li>
                             @endif
                             <li class="nav-item dropdown">
