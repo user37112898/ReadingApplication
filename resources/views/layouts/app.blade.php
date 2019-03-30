@@ -40,6 +40,9 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Contact Us</a>
+                        </li>
                         @guest
                             {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -50,12 +53,14 @@
                                 </li>
                             @endif --}}
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Contact Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/posts/create" class="nav-link">Create Post</a>
-                            </li>
+                            @if (Auth::user()->isadmin==1)
+                                <li class="nav-item">
+                                    <a href="/register" class="nav-link">Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/posts/create" class="nav-link">Create Post</a>
+                                </li>
+                            @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
