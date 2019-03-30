@@ -58,6 +58,9 @@
                         @else
                             @if (Auth::user()->isadmin==1)
                                 <li class="nav-item">
+                                    <a href="/users" class="nav-link">Users</a>
+                                </li>    
+                                <li class="nav-item">
                                     <a href="/posts/create" class="nav-link">Create Post</a>
                                 </li>    
                                 <li class="nav-item">

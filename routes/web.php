@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    if(Auth::user()){
+        return redirect('posts');
+    }else{
+        return view('auth.login');
+    }
 });
 Route::get('/app', function () {
     return view('layouts.app');
@@ -20,6 +24,7 @@ Route::get('/app', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resource('users','UsersController');
 Route::resource('posts','PostsController');

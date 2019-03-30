@@ -92,10 +92,11 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        //check for correct user
-        // if(auth()->user()->id != $post->user_id){
-        //     return redirect('/posts')->with('error','Unauthorized Access');
-        // }
+        $currentUser = User::find(auth()->user()->id);
+        if($currentUser->isadmin!=1){
+            return redirect('posts')->with('error','You are not authorized to view that page!!');
+        }
+
         return view('posts.edit')->with('post',$post);  
     }
 
@@ -138,9 +139,10 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        // if(auth()->user()->id != $post->user_id){
-        //     return redirect('/posts')->with('error','Unauthorized Access');
-        // }
+        $currentUser = User::find(auth()->user()->id);
+        if($currentUser->isadmin!=1){
+            return redirect('posts')->with('error','You are not authorized to view that page!!');
+        }
         $temp = $post->title;
 
         $post->delete();

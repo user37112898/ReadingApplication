@@ -40,6 +40,19 @@ class RegisterController extends Controller
         $this->middleware('auth');
     }
 
+
+    public function showRegistrationForm(){
+        $currentUser = User::find(auth()->user()->id);
+        if($currentUser->isadmin!=1){
+            return redirect('posts')->with('error','You are not authorized to view that page!!');
+        }else{
+            return view('auth.register');
+        }
+    }
+
+
+
+
     /**
      * Get a validator for an incoming registration request.
      *
