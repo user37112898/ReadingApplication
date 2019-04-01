@@ -71,7 +71,7 @@ window.onload = function() {
 
 @section('content')
     <a href="/posts" class="btn btn-outline-dark" role="button">Go Back</a>
-
+    <div><br></div>
     <div class="alert alert-primary" role="alert">
         <h1>{{$post->title}}</h1>
         <p class="h4">{{$post->description}}</p>
@@ -90,7 +90,7 @@ window.onload = function() {
 
     {{-- {{$posts->links()}} --}}
     <hr>
-    <small>Written on {{$post->created_at}} by {{$post->user->name}}</small>
+{{--<small>Written on {{$post->created_at}} by {{$post->user->name}}</small>--}}
     <hr>
     @if (!Auth::guest())        
     @if (Auth::user()->id == $post->user_id)        
