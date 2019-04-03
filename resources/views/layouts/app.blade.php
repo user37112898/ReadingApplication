@@ -46,7 +46,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Contact Us</a>
+                            <a class="nav-link" href="/contactus">Contact Us</a>
                         </li>
                         @guest
                             {{-- <li class="nav-item">
