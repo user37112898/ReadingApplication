@@ -43,6 +43,11 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
+    public function contactus()
+    {
+        return view('posts.contactus');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
