@@ -19,7 +19,7 @@ class UsersController extends Controller
             return redirect('posts')->with('error','You are not authorized to view that page!!');
         }
         $users = User::all();
-        return view('users')->with('users',$users);
+        return view('users.index')->with('users',$users);
     }
 
     /**
@@ -90,7 +90,8 @@ class UsersController extends Controller
             return redirect('posts')->with('error','You are not authorized to view that page!!');
         }
         $user = User::find($id);
+        $deletedUser = $user->name;
         $user->delete();
-        return redirect('users');
+        return redirect('users')->with('error',$deletedUser.' is deleted');
     }
 }

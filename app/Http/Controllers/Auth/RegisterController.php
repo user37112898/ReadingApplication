@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/posts';
+    protected $redirectTo = '/users';
 
     /**
      * Create a new controller instance.
@@ -40,6 +42,14 @@ class RegisterController extends Controller
         $this->middleware('auth');
     }
 
+    public function register(Request $request){
+        $this->validator($request->all())->validate();
+        event(new Registered($user = $this->create($request->all())));
+        //below line is commented to prevent auto login
+        // $this->guard()->login($user);  
+        $addeduser = $user->name;
+        return $this->registered($request, $user) ?: redirect($this->redirectPath())->with('success',$addeduser.' is added');
+    }
 
     public function showRegistrationForm(){
         $currentUser = User::find(auth()->user()->id);

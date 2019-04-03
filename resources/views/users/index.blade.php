@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<h2>Home section</h2>
+	<h2>Users section</h2>
 	@foreach ($users as $user)
 	<div class="card-body">
 		<div class="row">
