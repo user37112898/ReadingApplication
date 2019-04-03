@@ -22,6 +22,10 @@ Route::get('/app', function () {
     return view('layouts.app');
 });
 
+Route::get('/contactus', function () {
+    return view('posts.contactus');
+});
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
