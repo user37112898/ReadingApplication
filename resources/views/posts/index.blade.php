@@ -28,7 +28,9 @@
                                     <a href="#" class="btn btn-primary">Give Exam</a>   
                                 @else
                                     <div class="d-flex justify-content-center">
-                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary mr-3">Edit</a>
+                                        <a href="/posts/{{$post->id}}" class="btn btn-success mr-5">Read</a>
+                                        
+                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary mr-5">Edit</a>
                                         {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST'])!!}
                                             {{Form::hidden('_method','DELETE')}}
                                             {{Form::submit('Delete',['class'=>'btn btn-danger ml-3'])}}
