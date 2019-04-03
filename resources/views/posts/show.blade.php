@@ -90,7 +90,10 @@ window.onload = function() {
 
     {{-- {{$posts->links()}} --}}
     <hr>
-{{--<small>Written on {{$post->created_at}} by {{$post->user->name}}</small>--}}
+        <?php 
+            $createdByName = is_object($post->user)? $post->user->name : 'Deleted Admin';
+        ?>
+        <small>Written on {{$post->created_at}} by {{$createdByName}}</small>
     <hr>
     @if (!Auth::guest())        
     @if (Auth::user()->id == $post->user_id)        
