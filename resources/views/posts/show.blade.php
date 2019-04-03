@@ -88,7 +88,14 @@ window.onload = function() {
     <a href="javascript:nextPage()" id="btn_next">Next</a>
     page: <span id="page"></span>
 
-    {{-- {{$posts->links()}} --}}
+    <hr>
+    <div>
+        <h2>Tags<h2>
+        @foreach($posttags as $tag)
+                <span class="badge badge-secondary" style="font-size:12px;vertical-align:middle;">{{$tag}}</span>
+        @endforeach  
+    </div>
+
     <hr>
         <?php 
             $createdByName = is_object($post->user)? $post->user->name : 'Deleted Admin';

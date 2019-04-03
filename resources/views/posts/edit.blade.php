@@ -23,10 +23,38 @@
                 {{Form::text('author',$post->author,['class'=>'form-control','placeholder'=>'Author'])}}
             </div>
         </div>
+
         <div class="form-group row">
             {{Form::label('tags','Tags',['class'=>'col-sm-2 col-form-label'])}}
+            <?php
+                $technologyBool=false;
+                $businessBool=false;
+                $companyBool=false;
+                $innovationBool=false;
+                foreach ($posttags as $tag) {
+                    if($tag=="Technology"){
+                        $technologyBool=true;
+                    }
+                    if($tag=="Business"){
+                        $businessBool=true;
+                    }
+                    if($tag=="Company"){
+                        $companyBool=true;
+                    }
+                    if($tag=="Innovation"){
+                        $innovationBool=true;
+                    }
+                }
+            ?>
             <div class="col-sm-10">
-                {{Form::text('tags',$post->tags,['class'=>'form-control','placeholder'=>'Tags'])}}
+                <?php echo Form::checkbox('tag0', '1',$technologyBool);?> Technology
+                &emsp;&emsp;
+                <?php echo Form::checkbox('tag1', '1',$businessBool);?> Business
+                &emsp;&emsp;
+                <?php echo Form::checkbox('tag2', '1',$companyBool);?> Company
+                &emsp;&emsp;
+                <?php echo Form::checkbox('tag3', '1',$innovationBool);?> Innovation
+                &emsp;&emsp;
             </div>
         </div>
 

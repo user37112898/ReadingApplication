@@ -23,10 +23,18 @@
                 {{Form::text('author','',['class'=>'form-control','placeholder'=>'Author'])}}
             </div>
         </div>
+
         <div class="form-group row">
             {{Form::label('tags','Tags',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
-                {{Form::text('tags','',['class'=>'form-control','placeholder'=>'Tags'])}}
+                <?php echo Form::checkbox('tag0', '0');?> Technology
+                &emsp;&emsp;
+                <?php echo Form::checkbox('tag1', '1');?> Business
+                &emsp;&emsp;
+                <?php echo Form::checkbox('tag2', '2');?> Company
+                &emsp;&emsp;
+                <?php echo Form::checkbox('tag3', '3');?> Innovation
+                &emsp;&emsp;
             </div>
         </div>
 

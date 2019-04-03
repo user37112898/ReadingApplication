@@ -63,7 +63,22 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->body = $request->input('body');
         $post->evaluation = $request->input('evaluation');
-        $post->tags = $request->input('tags');
+
+        $tag = "";
+        if($request->input('tag0')==1){
+            $tag = $tag."Technology,";
+        }
+        if($request->input('tag1')==1){
+            $tag = $tag."Business,";
+        }
+        if($request->input('tag2')==1){
+            $tag = $tag."Company,";
+        }
+        if($request->input('tag3')==1){
+            $tag = $tag."Innovation,";
+        }
+        $post->tags = $tag;
+        // $post->tags = $request->input('tags');
         $post->user_id = auth()->user()->id;
         $post->save();
 
@@ -80,7 +95,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $bodyarray = explode(".",$post->body);
-        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray]);
+        $posttags = explode(",",$post->tags);
+        return $post;
+        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags]);
     }
 
     /**
@@ -97,8 +114,8 @@ class PostsController extends Controller
         if($currentUser->isadmin!=1){
             return redirect('posts')->with('error','You are not authorized to view that page!!');
         }
-
-        return view('posts.edit')->with('post',$post);  
+        $posttags = explode(",",$post->tags);
+        return view('posts.edit')->with(['post'=>$post,'posttags'=>$posttags]);  
     }
 
     /**
@@ -123,7 +140,21 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->body = $request->input('body');
         $post->evaluation = $request->input('evaluation');
-        $post->tags = $request->input('tags');
+        
+        $tag = "";
+        if($request->input('tag0')==1){
+            $tag = $tag."Technology,";
+        }
+        if($request->input('tag1')==1){
+            $tag = $tag."Business,";
+        }
+        if($request->input('tag2')==1){
+            $tag = $tag."Company,";
+        }
+        if($request->input('tag3')==1){
+            $tag = $tag."Innovation,";
+        }
+        $post->tags = $tag;
         // $post->user_id=0;//$post->user_id = auth()->user()->id;
 
         $post->save();
