@@ -101,7 +101,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $bodyarray = explode(".",$post->body);
         $posttags = explode(",",$post->tags);
-        return $post;
+        // return $post;
         return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags]);
     }
 
