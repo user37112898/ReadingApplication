@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 
     <h1>Edit Post</h1>
     {!!Form::open(['action'=>['PostsController@update',$post->id],'method'=>'POST'])!!}
@@ -79,10 +78,11 @@
         <div class="form-group row">
             {{Form::label('body','Body',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
-                {{-- <TODO:> Ck editor not working</TODO:> --}}
+                <textarea name="content" id="editor">This is some sample content.</textarea>
+                <!-- {{-- <TODO:> Ck editor not working</TODO:> --}}
                 {{-- {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body'])}} --}}
                 {{Form::textarea('body',$post->body,['class'=>'form-control','placeholder'=>'Body'])}}
-                {{-- <textarea name="editor1"></textarea> --}}
+                {{-- <textarea name="editor1"></textarea> --}} -->
             </div>
         </div>
 
@@ -106,4 +106,14 @@
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!!Form::close()!!}
+    <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .then( editor => {
+                console.log( editor );
+                } )
+                .catch( error => {
+                console.error( error );
+            } );
+        </script>
 @endsection
