@@ -24,8 +24,8 @@
                             <p>By {{$post->author}} </p>
                                 
                                 @if (Auth::user()->isadmin==0)
-                                    <a href="/posts/{{$post->id}}" class="btn btn-primary">Read</a>
-                                    <a href="#" class="btn btn-primary">Give Exam</a>   
+                                <a href="/posts/{{$post->id}}"><button type="button" class="btn btn-outline-success ml-3">Read</button></a>
+                                    <a href="#" class="btn btn-outline-primary ml-3">Give Exam</a>   
                                 @else
                                     <div class="d-flex justify-content-center">
                                         <a href="/posts/{{$post->id}}"><button type="button" class="btn btn-outline-success ml-3">Read</button></a>
