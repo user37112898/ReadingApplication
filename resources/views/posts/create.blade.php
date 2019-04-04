@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <h1>Create Post</h1>
+    <h1>Create</h1>
     {!!Form::open(['action'=>'PostsController@store','method'=>'POST'])!!}
         <div class="form-group row">
             {{Form::label('title','Title',['class'=>'col-sm-2 col-form-label'])}}
