@@ -10,16 +10,15 @@
     <title>{{ config('app.name', 'Jyoti CNC') }}</title>
 
     <!-- Scripts -->
-    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-    <!-- <script src="https://cdn.ckeditor.com/4.11.3/full/ckeditor.js"></script> -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
 </head>
 <body>
     <div id="app">
@@ -103,13 +102,10 @@
         </main>
     </div>
 
-<<<<<<< HEAD
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
     </script>
 
-=======
->>>>>>> ed43731da506b8facf9f563ad51df8281f0b0c54
 </body>
 </html>
