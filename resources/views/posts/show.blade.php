@@ -1,6 +1,6 @@
 <script>
     var current_page = 1;
-    var records_per_page = 15;
+    var records_per_page = 1;
 
 var s = <?php echo json_encode($bodyarray); ?>;
 

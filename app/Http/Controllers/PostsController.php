@@ -99,7 +99,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $bodyarray = explode(".",$post->body);
+        $bodyarray = str_split($post->body, 1992);
         $posttags = explode(",",$post->tags);
         // return $post;
         return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags]);
