@@ -28,12 +28,12 @@
                                     <a href="#" class="btn btn-primary">Give Exam</a>   
                                 @else
                                     <div class="d-flex justify-content-center">
-                                        <a href="/posts/{{$post->id}}" class="btn btn-success mr-5">Read</a>
+                                        <a href="/posts/{{$post->id}}"><button type="button" class="btn btn-outline-success ml-3">Read</button></a>
                                         
-                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary mr-5">Edit</a>
+                                        <a href="/posts/{{$post->id}}/edit" class="btn btn-outline-primary ml-3">Edit</a>
                                         {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST'])!!}
                                             {{Form::hidden('_method','DELETE')}}
-                                            {{Form::submit('Delete',['class'=>'btn btn-danger ml-3'])}}
+                                            {{Form::submit('Delete',['class'=>'btn btn-outline-danger ml-3'])}}
                                         {!!Form::close()!!}
                                     </div>   
                                 @endif

@@ -27,7 +27,7 @@
                 <?php 
                     $link = (Auth::user())?'/posts':'/login';
                 ?>
-                <a href="{{ url ($link) }}">
+                <a href="{{ url ($link) }}"  style="padding-right: 20px">
                     <img src="http://jyoti.co.in/wp-content/uploads/2016/01/jyoti-logo.png" alt="Jyoti CNC">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -38,7 +38,7 @@
                     <!-- Left Side Of Navbar -->
                     @auth
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item" style="padding-left: 20px">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/posts">Posts</a>
                             </li>
                         </ul>

@@ -90,9 +90,9 @@ window.onload = function() {
 
     <hr>
     <div>
-        <h2>Tags<h2>
+        <h2 style="display:inline">Tags<h2>
         @foreach($posttags as $tag)
-                <span class="badge badge-secondary" style="font-size:12px;vertical-align:middle;">{{$tag}}</span>
+            <span class="badge badge-info" style="font-size:12px;vertical-align:middle;">{{$tag}}</span>
         @endforeach  
     </div>
 
