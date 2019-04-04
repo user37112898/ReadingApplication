@@ -36,11 +36,13 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item" style="padding-left: 20px">
-                            <a class="nav-link" href="/posts">Posts</a>
-                        </li>
-                    </ul>
+                    @auth
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item" style="padding-left: 20px">
+                                <a class="nav-link" href="/posts">Posts</a>
+                            </li>
+                        </ul>
+                    @endauth
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
