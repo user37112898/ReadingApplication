@@ -84,9 +84,9 @@ window.onload = function() {
     {{-- <div>{!!$post->body!!}</div> This syntax will parse the body --}}
     <p id="listingTable" width="100px"></p>
     
-    <a href="javascript:prevPage()" id="btn_prev">Prev</a>
-    <a href="javascript:nextPage()" id="btn_next">Next</a>
-    page: <span id="page"></span>
+    <a href="javascript:prevPage()" id="btn_prev" class="btn btn-outline-info btn-sm">Prev</a>
+    Page: <span id="page"></span>
+    <a href="javascript:nextPage()" id="btn_next" class="btn btn-outline-info btn-sm">Next</a>
 
     <hr>
     <div>
@@ -103,12 +103,12 @@ window.onload = function() {
         <small>Written on {{$post->created_at}} by {{$createdByName}}</small>
     <hr>
     @if (!Auth::guest())        
-    @if (Auth::user()->id == $post->user_id)        
-      <a href="/posts/{{$post->id}}/edit" class="btn btn-default">Edit</a>
-    {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST','class'=>'float-right'])!!}
-        {{Form::hidden('_method','DELETE')}}
-        {{Form::submit('Delete',['class'=>'btn btn-danger'])}}
-    {!!Form::close()!!}
-    @endif
+        @if (Auth::user()->id == $post->user_id)        
+            <a href="/posts/{{$post->id}}/edit" class="btn btn-outline-success">Edit</a>
+            {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST','class'=>'float-right'])!!}
+                {{Form::hidden('_method','DELETE')}}
+                {{Form::submit('Delete',['class'=>'btn btn-outline-danger'])}}
+            {!!Form::close()!!}
+        @endif
     @endif
 @endsection
