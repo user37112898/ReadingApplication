@@ -82,11 +82,13 @@ window.onload = function() {
     <div>{{$post->body}}</div> --}}
     
     {{-- <div>{!!$post->body!!}</div> This syntax will parse the body --}}
-    <p id="listingTable" width="100px"></p>
+    <div class="jumbotron">
+        <p id="listingTable" width="100px"></p>
     
-    <a href="javascript:prevPage()" id="btn_prev" class="btn btn-outline-info btn-sm">Prev</a>
-    Page: <span id="page"></span>
-    <a href="javascript:nextPage()" id="btn_next" class="btn btn-outline-info btn-sm">Next</a>
+        <a href="javascript:prevPage()" id="btn_prev" class="btn btn-outline-info btn-sm">Prev</a>
+        Page: <span id="page"></span>
+        <a href="javascript:nextPage()" id="btn_next" class="btn btn-outline-info btn-sm">Next</a>
+    </div>
 
     <hr>
     <div>
@@ -111,4 +113,45 @@ window.onload = function() {
             {!!Form::close()!!}
         @endif
     @endif
+
+    <hr>
+    <div class="jumbotron">
+    
+    <h2>Comments</h2>
+    @if (count($comments)>0)
+    @foreach($comments as $comment)
+        <div class="alert alert-light" style="padding-bottom:25px">
+            <div>{{$comment->comment}}</div>
+            <div class="float-right">
+                <small style="display: inline-block;color:rgb(90,80,70)">{{$comment->username}}</small>
+                <small>{{$comment->created_at}}</small>
+            </div>
+        </div>
+    @endforeach 
+    @else
+    <div class="alert alert-secondary">No Comments</div>
+    @endif
+    {!!Form::open(['route'=>['comments.store',$post->id],'method'=>'POST'])!!}
+    <div>
+        <div class="form-group row">            
+            <div class="col-sm-10" style="display: inline-block">
+                {{Form::text('comment','',['class'=>'form-control','placeholder'=>'Add Comment'])}}
+            </div>
+            {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+        </div>
+    </div>
+    {!!Form::close()!!}
+    
+</div>
+    {{--{!!Form::open(['action'=>['CommentController@store',$post->id],'method'=>'POST'])!!}
+    <div>
+        <div class="form-group row">
+            {{Form::label('comment','Comment',['class'=>'col-sm-2 col-form-label'])}}
+            <div class="col-sm-10">
+                {{Form::text('comment','',['class'=>'form-control','placeholder'=>'Add Comment'])}}
+            </div>
+        </div>
+    </div>
+    {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+    {!!Form::close()!!}--}}
 @endsection

@@ -2,7 +2,8 @@
 
 @section('content')
 
-
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <h1>Create</h1>
     {!!Form::open(['action'=>'PostsController@store','method'=>'POST'])!!}
         <div class="form-group row">
@@ -50,7 +51,7 @@
         <div class="form-group row">
             {{Form::label('body','Body',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
-                <textarea name="body" id="editor">This is some sample content.</textarea>
+                <textarea id="summernote" name="editordata"></textarea>
                
                 <!-- {{-- <TODO:> Ck editor not working</TODO:> --}}
                 {{-- {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body'])}} --}}
@@ -70,7 +71,23 @@
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!!Form::close()!!}
 
-        <script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+  toolbar: [
+    // [groupName, [list of button]]
+    ['style', ['bold', 'italic', 'underline', 'clear']],
+    ['font', ['strikethrough', 'superscript', 'subscript']],
+    ['fontsize', ['fontsize']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['height', ['height']]
+  ]
+});
+        // $('#summernote').summernote();
+    });
+  </script>
+       <!--  <script>
             ClassicEditor
                 .create( document.querySelector( '#editor' ) )
                 .then( editor => {
@@ -79,7 +96,7 @@
                 .catch( error => {
                 console.error( error );
             } );
-        </script>
+        </script> -->
 <!-- <script>
                         CKEDITOR.replace( 'editor1' );
                 </script> -->

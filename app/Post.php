@@ -17,6 +17,10 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function comments(){
+        return $this->hasMany('App\Comment');
+    }
+
     public function questions(){
         return $this->hasMany('App\Question');
     }
@@ -24,5 +28,4 @@ class Post extends Model
     public function addQuestion($question)
     {
       return $this->questions()->create($question);
-    }
 }
