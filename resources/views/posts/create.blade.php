@@ -50,7 +50,7 @@
         <div class="form-group row">
             {{Form::label('body','Body',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
-                <textarea name="body" id="editor">This is some sample content.</textarea>
+                <textarea id="summernote" name="editordata"></textarea>
                
                 <!-- {{-- <TODO:> Ck editor not working</TODO:> --}}
                 {{-- {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body'])}} --}}
@@ -70,7 +70,12 @@
         {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!!Form::close()!!}
 
-        <script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
+       <!--  <script>
             ClassicEditor
                 .create( document.querySelector( '#editor' ) )
                 .then( editor => {
@@ -79,7 +84,7 @@
                 .catch( error => {
                 console.error( error );
             } );
-        </script>
+        </script> -->
 <!-- <script>
                         CKEDITOR.replace( 'editor1' );
                 </script> -->
