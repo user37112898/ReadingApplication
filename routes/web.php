@@ -38,3 +38,7 @@ Auth::routes();
 Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
+Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
