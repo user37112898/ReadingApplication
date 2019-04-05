@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
+use App\Comment;
 class PostsController extends Controller
 {
 
@@ -99,10 +100,11 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        $bodyarray = str_split($post->body, 1992);
+        $bodyarray = str_split($post->body, 2600);
         $posttags = explode(",",$post->tags);
         // return $post;
-        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags]);
+        
+        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments]);
     }
 
     /**

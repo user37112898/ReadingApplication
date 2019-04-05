@@ -32,6 +32,9 @@ Auth::routes();
 
 Route::resource('users','UsersController');
 Route::resource('posts','PostsController');
+// Route::resource('comments','CommentController');
 Auth::routes();
+
+Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
 
 Route::get('/home', 'HomeController@index')->name('home');
