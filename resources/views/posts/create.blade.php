@@ -2,7 +2,8 @@
 
 @section('content')
 
-
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <h1>Create</h1>
     {!!Form::open(['action'=>'PostsController@store','method'=>'POST'])!!}
         <div class="form-group row">
