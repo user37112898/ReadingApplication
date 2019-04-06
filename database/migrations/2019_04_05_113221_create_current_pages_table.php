@@ -22,6 +22,7 @@ class CreateCurrentPagesTable extends Migration
             $table->integer('currentpage');
             $table->date('sdate');
             $table->date('ldate');
+            $table->integer('outof');
             $table->timestamps();
         });
     }
