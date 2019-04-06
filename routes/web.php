@@ -25,9 +25,10 @@ Route::get('/app', function () {
 Route::get('/contactus', function () {
     return view('posts.contactus');
 });
-Route::get('/dashboard', function () {
-    return view('posts.dashboard');
+Route::get('/selfev', function () {
+    return view('posts.selfevaluation');
 });
+Route::get('/dashboard','PostsController@dash');
 
 Auth::routes();
 
