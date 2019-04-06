@@ -20,4 +20,12 @@ class Post extends Model
     public function comments(){
         return $this->hasMany('App\Comment');
     }
+
+    public function questions(){
+        return $this->hasMany('App\Question');
+    }
+
+    public function addQuestion($question)
+    {
+      return $this->questions()->create($question);
 }
