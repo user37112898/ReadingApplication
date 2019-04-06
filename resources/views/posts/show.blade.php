@@ -77,8 +77,8 @@ window.onload = function() {
 @section('content')
     <a href="/posts" class="btn btn-outline-dark" role="button">Go Back</a>
     <div><br></div>
-    <div align="center">
-                    <label>Font Size</label>
+    <div align="right">
+                    <label><b>Font Size</b></label>
                     <button type="button" class="btn btn-outline-primary ml-3" onclick="large()">+</button>
                     <button type="button" class="btn btn-outline-danger ml-3" onclick="small()">-</button>
                     <script> 
