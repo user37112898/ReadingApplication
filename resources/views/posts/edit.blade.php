@@ -79,11 +79,38 @@
         <div class="form-group row">
             {{Form::label('body','Body',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
-                <textarea id="summernote" name="editordata"></textarea>
+            <textarea id="summernote" name="body">{{$post->body}}</textarea>
                 <!-- {{-- <TODO:> Ck editor not working</TODO:> --}}
                 {{-- {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body'])}} --}}
-                {{Form::textarea('body',$post->body,['class'=>'form-control','placeholder'=>'Body'])}}
+                {{-- {{Form::textarea('body',$post->body,['class'=>'form-control','placeholder'=>'Body'])}} --}}
                 {{-- <textarea name="editor1"></textarea> --}} -->
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{Form::label('evaluation questions','Langauge',['class'=>'col-sm-2 col-form-label'])}}
+            <div class="col-sm-10 form-control'">
+                <?php 
+                if($post->langauge=="English"){
+                    $englishValue=true;
+                    $hindiValue=false;
+                    $gujaratiValue=false;
+                } else if($post->langauge=="Hindi"){
+                    $englishValue=false;
+                    $hindiValue=true;
+                    $gujaratiValue=false;
+                }
+                else{
+                    $englishValue=false;
+                    $hindiValue=false;
+                    $gujaratiValue=true;
+                }
+                ?>
+                <?php echo Form::radio('langauge', 'English',$englishValue)?> English
+                &emsp;&emsp;
+                <?php echo Form::radio('langauge', 'Hindi',$hindiValue)?> Hindi
+                &emsp;&emsp;
+                <?php echo Form::radio('langauge', 'Gujarati',$gujaratiValue)?> Gujarati
             </div>
         </div>
 

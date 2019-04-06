@@ -32,7 +32,7 @@
                                         
                                         <a href="/posts/{{$post->id}}/edit" class="btn btn-outline-primary ml-3">Edit</a>
                                         {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST'])!!}
-                                            {{Form::hidden('_method','DELETE')}}
+                                            {{Form::hidden('_method','PATCH')}}
                                             {{Form::submit('Delete',['class'=>'btn btn-outline-danger ml-3'])}}
                                         {!!Form::close()!!}
                                     </div>   
