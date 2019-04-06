@@ -15,7 +15,7 @@ class QuestionsController extends Controller
   {
       $this->middleware('auth');
   }
-    
+
   public function index($id)
   {
 

@@ -25,9 +25,7 @@ Route::get('/app', function () {
 Route::get('/contactus', function () {
     return view('posts.contactus');
 });
-Route::get('/dashboard', function () {
-    return view('posts.dashboard');
-});
+Route::get('/dashboard','PostsController@dash');
 
 Auth::routes();
 
@@ -51,3 +49,24 @@ Route::put('/posts/{post}/dec', 'CurrentPageController@dec');
 // Route::put('currentpage/{post_id}', ['uses' => 'CurrentPageController@inc', 'as' => 'currentpage.inc']);
 
 // Route::patch('currentpage/{post_id}', ['uses' => 'CurrentPageController@dec', 'as' => 'currentpage.dec']);
+
+Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
+Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
+
+//Add Question Route
+Route::get('/create/{post}/questions', 'QuestionsController@index');
+
+Route::post('/posts/{post}/question', 'QuestionsController@store');
+
+//Add options route
+Route::get('/question/{id}', 'QuestionsController@indexOptions');
+
+Route::post('/question/{question}/option', 'QuestionsController@storeOptions');
+
+Route::patch('/options/{option}', 'QuestionsController@update');
+
+Route::get('exam/{post}', 'ExamsController@index');
+Route::post('exam/{post}', 'ExamsController@store');
+
+Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
+Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
