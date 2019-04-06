@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\User;
 use App\Comment;
@@ -11,7 +12,7 @@ class PostsController extends Controller
 
     /**
      * Create a new controller instance
-     * 
+     *
      * @return void
      */
     public function __construct()
@@ -64,8 +65,8 @@ class PostsController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
-        ]);        
-        
+        ]);
+
         $post = new Post;
         $post->title = $request->input('title');
         $post->description = $request->input('description');
@@ -107,7 +108,7 @@ class PostsController extends Controller
         $bodyarray = str_split($post->body, 2600);
         $posttags = explode(",",$post->tags);
         // return $post;
-        
+
         return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments]);
     }
 
@@ -126,7 +127,7 @@ class PostsController extends Controller
             return redirect('posts')->with('error','You are not authorized to view that page!!');
         }
         $posttags = explode(",",$post->tags);
-        return view('posts.edit')->with(['post'=>$post,'posttags'=>$posttags]);  
+        return view('posts.edit')->with(['post'=>$post,'posttags'=>$posttags]);
     }
 
     /**
@@ -151,7 +152,7 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->body = $request->input('body');
         $post->evaluation = $request->input('evaluation');
-        
+
         $tag = "";
         if($request->input('tag0')==1){
             $tag = $tag."Technology,";
@@ -190,5 +191,38 @@ class PostsController extends Controller
 
         $post->delete();
         return redirect('/posts')->with('delete',$temp.' Deleted');
+    }
+
+    public function dash()
+    {
+      $total = DB::select('select name from users');
+      //dd(sizeof($total));
+
+      $books = DB::select('SELECT COUNT(type) FROM posts WHERE type=?',['Book']);
+
+      $articles = DB::select('SELECT COUNT(type) FROM posts WHERE type=?',['Article']);
+
+      $status1 = DB::select('select status from current_pages where status = ?', [1]);
+      //dd(sizeof($status1));
+
+      $status3 = DB::select('select status from current_pages where status = ?', [3]);
+      //dd(sizeof($status3));
+
+      $reader = DB::select('select userid, count(*) totalcount from current_pages where `status`=? group by userid having count(*)>? ORDER BY COUNT(*) DESC LIMIT ?',[2,1,1]);
+      //dd($reader[0]->userid);
+
+      $readerName = User::find($reader[0]->userid);
+      //dd($readerName->name);
+
+      $result = [
+        'total' => sizeof($total),
+        'books' => sizeof($books),
+        'articles' => sizeof($articles),
+        'status1' => sizeof($status1),
+        'status3' => sizeof($status3),
+        'readerName' => $readerName->name
+      ];
+      return view('posts.dashboard', compact('result'));
+
     }
 }

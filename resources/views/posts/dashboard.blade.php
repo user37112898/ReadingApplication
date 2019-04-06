@@ -14,7 +14,7 @@
 									<div class="card-header">Employee</div>
 									<div class="card-body text-info">
 										<h5 class="card-title">Total Employee Registered</h5>
-										<h1>5</h1>
+										<h1>{{$result['total']}}</h1>
 										<!-- SELECT COUNT(name) FROM users; -->
 									</div>
 								</div>
@@ -24,7 +24,7 @@
 									<div class="card-header">Books</div>
 									<div class="card-body text-info">
 										<h5 class="card-title">No. of Books Uploaded</h5>
-										<h1>7</h1>
+										<h1>{{$result['books']}}</h1>
 										<!-- SELECT COUNT(type) FROM posts WHERE type=Book;  -->
 									</div>
 								</div>
@@ -34,7 +34,7 @@
 									<div class="card-header">Articles</div>
 									<div class="card-body text-info">
 										<h5 class="card-title">No. of Articles Uploaded</h5>
-										<h1>7</h1>
+										<h1>{{$result['articles']}}</h1>
 										<!-- SELECT COUNT(type) FROM posts WHERE type=Article;  -->
 									</div>
 								</div>
@@ -55,7 +55,7 @@
 									<div class="card-header">Employee</div>
 									<div class="card-body text-info">
 										<h5 class="card-title">Total Pending Book</h5>
-										<h1>7</h1>
+										<h1>{{$result['status1']}}</h1>
 										<!-- SELECT COUNT(status) FROM current_pages WHERE status=1;  -->
 									</div>
 								</div>
@@ -65,7 +65,7 @@
 									<div class="card-header">Articles</div>
 									<div class="card-body text-info">
 										<h5 class="card-title">Total Test Given</h5>
-										<h1>7</h1>
+										<h1>{{$result['status3']}}</h1>
 										<!-- SELECT COUNT(status) FROM current_pages WHERE status=3;  -->
 									</div>
 								</div>
@@ -77,7 +77,7 @@
 									<div class="card-header">Employee</div>
 									<div class="card-body text-info">
 										<h5 class="card-title">Most Books/Article Read By</h5>
-										<h1>User Name</h1>
+										<h1>{{$result['readerName']}}</h1>
 										<!-- SELECT userid, COUNT(*) totalcount FROM current_pages WHERE `status`=2 GROUP BY userid HAVING COUNT(*)>1 ORDER BY COUNT(*) DESC LIMIT 1 -->
 									</div>
 								</div>

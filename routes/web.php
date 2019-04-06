@@ -25,9 +25,7 @@ Route::get('/app', function () {
 Route::get('/contactus', function () {
     return view('posts.contactus');
 });
-Route::get('/dashboard', function () {
-    return view('posts.dashboard');
-});
+Route::get('/dashboard','PostsController@dash');
 
 Auth::routes();
 
@@ -64,4 +62,3 @@ Route::post('exam/{post}', 'ExamsController@store');
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
-
