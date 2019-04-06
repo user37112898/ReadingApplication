@@ -48,6 +48,12 @@ Route::patch('/postsenglish', 'PostsController@english');
 Route::patch('/postshindi', 'PostsController@hindi');
 Route::patch('/postsgujarati', 'PostsController@gujarati');
 
+Route::patch('/postsalltags', 'PostsController@index');
+Route::patch('/poststechnology', 'PostsController@technology');
+Route::patch('/postsbusiness', 'PostsController@business');
+Route::patch('/postscompany', 'PostsController@company');
+Route::patch('/postsinnovation', 'PostsController@innovation');
+
 // Route::get('/currentpagecontroller/{post_id}', 'CurrentPageController@inc');
 
 
