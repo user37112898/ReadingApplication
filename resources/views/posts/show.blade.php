@@ -1,5 +1,5 @@
 <script>
-    var current_page = <?php echo $currentpage->currentpage; ?>;;
+    var current_page = <?php echo $currentpage->currentpage; ?>;
     var records_per_page = 1;
 
 var s = <?php echo json_encode($bodyarray); ?>;
@@ -259,4 +259,11 @@ window.onload = function() {
     </div>
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
     {!!Form::close()!!}--}}
+<div>
+<b style="font-size:18px;">Suggestions</b>
+<br>
+<br>
+@include('posts.suggest');
+</div>
+
 @endsection

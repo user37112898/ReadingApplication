@@ -143,14 +143,24 @@ class PostsController extends Controller
      */
     public function show($id)
     {
+        
         $post = Post::find($id);
         $bodyarray = str_split($post->body, 2600);
         $posttags = explode(",",$post->tags);
- 
-        // return $post;
         $cp=CurrentPage::find($id);
-
-        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments,'currentpage'=>$cp]);
+        $posts = Post::orderBy('created_at','desc')->paginate(10);
+        
+        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments,'currentpage'=>$cp,'posts'=>$posts]);
+        
+    }
+    public function suggest($id)
+    {
+        
+        
+        $posts = Post::all();
+        
+        return view('posts.suggest')->with('posts',$posts);
+        
     }
 
     /**
