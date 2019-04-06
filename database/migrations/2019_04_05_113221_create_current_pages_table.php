@@ -20,6 +20,8 @@ class CreateCurrentPagesTable extends Migration
             $table->integer('status');
             $table->integer('result');
             $table->integer('currentpage');
+            $table->date('sdate');
+            $table->date('ldate');
             $table->timestamps();
         });
     }
