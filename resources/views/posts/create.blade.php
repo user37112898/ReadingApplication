@@ -51,7 +51,7 @@
         <div class="form-group row">
             {{Form::label('body','Body',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
-                <textarea id="summernote" name="editordata"></textarea>
+                <textarea id="summernote" name="body"></textarea>
                
                 <!-- {{-- <TODO:> Ck editor not working</TODO:> --}}
                 {{-- {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body'])}} --}}
