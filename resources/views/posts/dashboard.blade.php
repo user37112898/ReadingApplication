@@ -1,6 +1,58 @@
 @extends('layouts.app')
 @section('content')
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Numeric JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- Numeric JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
 <div class="table-responsive">
+	<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    <!-- JAVASCRIPT CODE GOES HERE -->
+  </script>
+	<div id="myDiv2"><!-- Plotly chart will be drawn inside this DIV --></div>
+	<script>var data = [{
+  values: [34,26,40],
+  labels: ['Completed', 'Pending', 'Test Given'],
+  domain: {column: 0},
+  name: 'Employee Analysis',
+  hoverinfo: 'label+percent+name',
+  hole: .6,
+  type: 'pie'
+}];
+
+var layout = {
+  title: 'Employee Analysis',
+  grid: {rows: 1, columns: 2},
+  showlegend: false
+ 
+  
+};
+
+Plotly.newPlot('myDiv2', data, layout, {showSendToCloud:true});</script>
+	 <div id="mydiv1" ><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    var data = [{
+  values: [19, 26, 55],
+  labels: ['Pending', 'Completed', 'Test'],
+  type: 'pie'
+}];
+
+Plotly.newPlot('mydiv1', data, {}, {showSendToCloud:true});
+  </script>
+	<div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+    var data = [
+  {
+    x: ['Oct18', 'Nov18', 'Dec18', 'Jan19', 'Feb19', 'March19'],
+    y: [1, 3, 6,2,3,4,5,6,7],
+    type: 'scatter'
+  }
+];
+
+Plotly.newPlot('myDiv', data, {}, {showSendToCloud: true});
+  </script>
 				<table class="table">
 					<thead>
 						<tr>
