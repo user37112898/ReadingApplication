@@ -48,6 +48,10 @@ class PostsController extends Controller
     {
         return view('posts.contactus');
     }
+    public function dashboard()
+    {
+        return view('posts.dashboard');
+    }
 
     /**
      * Store a newly created resource in storage.

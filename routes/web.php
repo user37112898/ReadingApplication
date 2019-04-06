@@ -25,6 +25,9 @@ Route::get('/app', function () {
 Route::get('/contactus', function () {
     return view('posts.contactus');
 });
+Route::get('/dashboard', function () {
+    return view('posts.dashboard');
+});
 
 Auth::routes();
 
