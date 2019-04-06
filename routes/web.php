@@ -43,6 +43,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::patch('/posts/{post}/inc', 'CurrentPageController@inc');
 Route::put('/posts/{post}/dec', 'CurrentPageController@dec');
 
+Route::patch('/postsallpost', 'PostsController@index');
+Route::patch('/postsenglish', 'PostsController@english');
+Route::patch('/postshindi', 'PostsController@hindi');
+Route::patch('/postsgujarati', 'PostsController@gujarati');
+
 // Route::get('/currentpagecontroller/{post_id}', 'CurrentPageController@inc');
 
 

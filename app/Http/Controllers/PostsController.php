@@ -38,6 +38,25 @@ class PostsController extends Controller
         return view('posts.index')->with('posts',$posts);
     }
 
+    public function english(){
+        $posts = DB::select("SELECT * FROM posts WHERE langauge='english'");
+        // SELECT * FROM Customers WHERE Country='Mexico';
+
+        return view('posts.index')->with('posts',$posts);
+    }
+
+    public function hindi(){
+        $posts = DB::select("SELECT * FROM posts WHERE langauge='hindi'");
+
+        return view('posts.index')->with('posts',$posts);
+    }
+
+    public function gujarati(){
+        $posts = DB::select("SELECT * FROM posts WHERE langauge='gujarati'");
+        
+        return view('posts.index')->with('posts',$posts);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
