@@ -56,6 +56,7 @@ Route::post('/question/{question}/option', 'QuestionsController@storeOptions');
 Route::patch('/options/{option}', 'QuestionsController@update');
 
 Route::get('exam/{post}', 'ExamsController@index');
+Route::post('exam/{post}', 'ExamsController@store');
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
