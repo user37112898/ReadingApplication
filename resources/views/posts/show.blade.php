@@ -77,9 +77,78 @@ window.onload = function() {
 @section('content')
     <a href="/posts" class="btn btn-outline-dark" role="button">Go Back</a>
     <div><br></div>
+    <div align="right">
+                    <label><b>Font Size</b></label>
+                    <button type="button" class="btn btn-outline-primary ml-3" onclick="large()">+</button>
+                    <button type="button" class="btn btn-outline-danger ml-3" onclick="small()">-</button>
+                    <script> 
+                            function large()
+                             {
+                                txt = document.getElementById('g');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize + 5) + 'px';
+                                var font = document.getElementById('g').style.fontSize;
+                                txt = document.getElementById('f');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize + 5) + 'px';
+                                var font = document.getElementById('f').style.fontSize;
+                                txt = document.getElementById('listingTable');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize + 5) + 'px';
+                                var font = document.getElementById('listingTable').style.fontSize;
+                                txt = document.getElementById('t');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize + 5) + 'px';
+                                var font = document.getElementById('t').style.fontSize;
+                                txt = document.getElementById('w');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize + 5) + 'px';
+                                var font = document.getElementById('w').style.fontSize;              
+                                
+                                   
+                            }
+                        
+                            function small() {
+                                txt = document.getElementById('g');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize - 5) + 'px';
+                                var font = document.getElementById('g').style.fontSize;
+                                txt = document.getElementById('f');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize - 5) + 'px';
+                                var font = document.getElementById('f').style.fontSize;
+                                txt = document.getElementById('listingTable');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize - 5) + 'px';
+                                var font = document.getElementById('listingTable').style.fontSize;
+                                txt = document.getElementById('t');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize - 5) + 'px';
+                                var font = document.getElementById('t').style.fontSize;
+                                txt = document.getElementById('w');
+                                style = window.getComputedStyle(txt, null).getPropertyValue('font-size');
+                                currentSize = parseFloat(style);
+                                txt.style.fontSize = (currentSize - 5) + 'px';
+                                var font = document.getElementById('w').style.fontSize;
+                                
+                            }
+
+                            
+                        </script>
+            </div><br>
+
     <div class="alert alert-primary" role="alert">
-        <h1>{{$post->title}}</h1>
-        <p class="h4">{{$post->description}}</p>
+        <h1 id="g">{{$post->title}}</h1>
+        <p id="f" class="h4">{{$post->description}}</p>
     </div>
 
     <hr>
@@ -130,7 +199,7 @@ window.onload = function() {
     <div>
         <span style="font-size:20px;font-weight:500;padding-right:10px">Tags</span>
         @foreach($posttags as $tag)
-            <span class="badge badge-info" style="font-size:12px;vertical-align:middle">{{$tag}}</span>
+            <span class="badge badge-info" style="vertical-align:middle" id="t">{{$tag}}</span>
         @endforeach  
     </div>
 
@@ -138,7 +207,7 @@ window.onload = function() {
         <?php 
             $createdByName = is_object($post->user)? $post->user->name : 'Deleted Admin';
         ?>
-        <small>Written on {{$post->created_at}} by {{$createdByName}}</small>
+        <p id="w">Written on {{$post->created_at}} by {{$createdByName}}</p>
     <hr>
     @if (!Auth::guest())        
         @if (Auth::user()->id == $post->user_id)        

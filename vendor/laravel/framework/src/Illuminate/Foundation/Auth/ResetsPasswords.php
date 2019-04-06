@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
-
+use App\User;
 trait ResetsPasswords
 {
     use RedirectsUsers;
@@ -24,9 +24,11 @@ trait ResetsPasswords
      */
     public function showResetForm(Request $request, $token = null)
     {
-        return view('auth.passwords.reset')->with(
+        
+        /*return view('auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
-        );
+        );*/
+        dd(request());
     }
 
     /**
