@@ -76,17 +76,9 @@
 								<div class="card border-info mb-3" style="max-width: 18rem;">
 									<div class="card-header">Employee</div>
 									<div class="card-body text-info">
-										<h5 class="card-title">Most Books Read By</h5>
+										<h5 class="card-title">Most Books/Article Read By</h5>
 										<h1>User Name</h1>
-									</div>
-								</div>
-							</th>
-							<th scope="row">
-								<div class="card border-info mb-3" style="max-width: 18rem;">
-									<div class="card-header">Books</div>
-									<div class="card-body text-info">
-										<h5 class="card-title">Most Article Read By</h5>
-										<h1>User Name</h1>
+										<!-- SELECT userid, COUNT(*) totalcount FROM current_pages WHERE `status`=2 GROUP BY userid HAVING COUNT(*)>1 ORDER BY COUNT(*) DESC LIMIT 1 -->
 									</div>
 								</div>
 							</th>
