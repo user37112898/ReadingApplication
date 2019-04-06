@@ -8,8 +8,11 @@ use App\Option;
 
 class ExamsController extends Controller
 {
+
+
     public function index($id)
     {
+
       $post = Post::findOrFail($id);
       return view('exam.show', compact('post'));
     }
@@ -17,6 +20,7 @@ class ExamsController extends Controller
     public function store(Post $post)
     {
       $attributes = array();
+      $totalQuestions = $post->questions->count();
       $result = 0;
       foreach ($post->questions as $question) {
         $id = request($question->id);
@@ -27,7 +31,7 @@ class ExamsController extends Controller
       }
 
 
-      dd($result);
+      dd($result.'/'.$totalQuestions);
 
     }
 }
