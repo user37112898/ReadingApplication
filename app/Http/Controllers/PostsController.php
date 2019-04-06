@@ -68,6 +68,8 @@ class PostsController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
+            'description'=>'required',
+            'author'=>'required',
         ]);
 
         $post = new Post;
@@ -77,6 +79,7 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->body = $request->input('body');
         $post->evaluation = $request->input('evaluation');
+        $post->langauge = $request->input('langauge');
 
         $tag = "";
         if($request->input('tag0')==1){
@@ -171,6 +174,7 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->body = $request->input('body');
         $post->evaluation = $request->input('evaluation');
+        $post->langauge = $request->input('langauge');
 
         $tag = "";
         if($request->input('tag0')==1){
