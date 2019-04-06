@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Post;
 use App\User;
 use App\Comment;
+use App\CurrentPage;
+use Carbon\Carbon;
 class PostsController extends Controller
 {
 
@@ -92,6 +95,20 @@ class PostsController extends Controller
         $post->user_id = auth()->user()->id;
         $post->save();
 
+
+        $allusers = USER::all();
+        foreach ($allusers as $user) {
+            $cp = new CurrentPage;
+            $cp->currentpage=1;
+            $cp->userid=$user->id;
+            $cp->postid=$post->id;
+            $cp->status=0;
+            $cp->ldate=Carbon::now()->format('Y-m-d');
+            $cp->sdate=Carbon::now()->format('Y-m-d');
+            $cp->result=0;
+            $cp->save();
+        }
+
         return redirect('/posts')->with('success','Post Created');
     }
 
@@ -106,9 +123,11 @@ class PostsController extends Controller
         $post = Post::find($id);
         $bodyarray = str_split($post->body, 2600);
         $posttags = explode(",",$post->tags);
+ 
         // return $post;
-        
-        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments]);
+        $cp=CurrentPage::find($id);
+
+        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments,'currentpage'=>$cp]);
     }
 
     /**
