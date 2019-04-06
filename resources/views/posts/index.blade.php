@@ -4,7 +4,12 @@
 <div class="container">
         <div class="alert alert-success" role="alert" align="center">
 				<h3>Display All Books</h3>
-			</div>
+            </div>
+            <div align="center">
+                    <button type="button" class="btn btn-outline-success ml-3">large</button>
+                    <button type="button" class="btn btn-outline-primary ml-3">Medium</button>
+                    <button type="button" class="btn btn-outline-danger ml-3">Small</button>
+            </div>
 			<div class="row">
 				<!--Card Layout Started-->
                 <!--Tile for Book 1 started-->

@@ -6,7 +6,11 @@ var s = <?php echo json_encode($bodyarray); ?>;
 
 var objJson = <?php echo json_encode($bodyarray); ?>; // Can be obtained from another source, such as your objJson variable
 
-console.log(s);
+// console.log(s);
+
+// changePage(current_page);
+// console.log("yash");
+
 
 function prevPage()
 {
@@ -26,6 +30,7 @@ function nextPage()
     
 function changePage(page)
 {
+    console.log("yash");
     var btn_next = document.getElementById("btn_next");
     var btn_prev = document.getElementById("btn_prev");
     var listing_table = document.getElementById("listingTable");
@@ -64,7 +69,7 @@ function numPages()
 }
 
 window.onload = function() {
-    changePage(1);
+    changePage(10);
 };
 </script>
 @extends('layouts.app')

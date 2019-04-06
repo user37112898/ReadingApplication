@@ -10,7 +10,5 @@ class CurrentPage extends Model
         protected $table = 'current_pages';
         //Primary Key
         public $primaryKey = 'id';
-        //Timestamps
-        public $timestamps = true;
     
 }

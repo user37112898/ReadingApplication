@@ -17,7 +17,7 @@ class CurrentPageController extends Controller
      */
     public function index()
     {
-        //
+        $cp=CurrentPage::all();
     }
 
     /**
@@ -55,7 +55,8 @@ class CurrentPageController extends Controller
         $cp = new CurrentPage;
         $cp->userid=auth()->user()->id;
         $cp->postid=$post->id;
-        $cp->currentpage=current_page;
+        $cp->currentpage=4;
+        $cp->status=1;
         $cp->save();
     }
 
