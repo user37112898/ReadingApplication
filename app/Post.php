@@ -28,12 +28,5 @@ class Post extends Model
     public function addQuestion($question)
     {
       return $this->questions()->create($question);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-}}
-=======
->>>>>>> 4c8f43da0a12d49f9a30a8b70bb51904fbb3dcfd
     }
 }
->>>>>>> 2cc5e846723fed6d9b42e6bf89002deb535ee454

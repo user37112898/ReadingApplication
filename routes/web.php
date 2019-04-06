@@ -43,13 +43,12 @@ Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-<<<<<<< HEAD
-=======
+
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
 
->>>>>>> 4c8f43da0a12d49f9a30a8b70bb51904fbb3dcfd
+
 //Add Question Route
 Route::get('/create/{post}/questions', 'QuestionsController@index');
 
@@ -63,17 +62,10 @@ Route::post('/question/{question}/option', 'QuestionsController@storeOptions');
 Route::patch('/options/{option}', 'QuestionsController@update');
 
 Route::get('exam/{post}', 'ExamsController@index');
-<<<<<<< HEAD
-
-=======
 Route::post('exam/{post}', 'ExamsController@store');
->>>>>>> 4c8f43da0a12d49f9a30a8b70bb51904fbb3dcfd
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
 
-<<<<<<< HEAD
 // Route::get('sendmail','ForgotPasswordController@sent_mail');
 
-=======
->>>>>>> 4c8f43da0a12d49f9a30a8b70bb51904fbb3dcfd
