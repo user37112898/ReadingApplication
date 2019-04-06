@@ -1,5 +1,5 @@
 <script>
-    var current_page = 1;
+    var current_page = <?php echo $currentpage->currentpage; ?>;;
     var records_per_page = 1;
 
 var s = <?php echo json_encode($bodyarray); ?>;
@@ -15,7 +15,7 @@ var objJson = <?php echo json_encode($bodyarray); ?>; // Can be obtained from an
 function prevPage()
 {
     if (current_page > 1) {
-        current_page--;
+        // current_page--;
         changePage(current_page);
     }
 }
@@ -23,7 +23,7 @@ function prevPage()
 function nextPage()
 {
     if (current_page < numPages()) {
-        current_page++;
+        // current_page++;
         changePage(current_page);
     }
 }
@@ -69,7 +69,7 @@ function numPages()
 }
 
 window.onload = function() {
-    changePage(10);
+    changePage(current_page);
 };
 </script>
 @extends('layouts.app')
@@ -158,10 +158,41 @@ window.onload = function() {
     {{-- <div>{!!$post->body!!}</div> This syntax will parse the body --}}
     <div class="jumbotron">
         <p id="listingTable" width="100px"></p>
-    
+
+    <form action="/posts/{{ $post->id }}/inc" method="POST">
+        {{ method_field('PATCH') }}
+        @csrf
+        <input onclick="nextPage()" id="btn_next" class="btn btn-outline-secondary" type="submit" value="Next">
+    </form>
+    Page: <span id="page"></span>
+    <form action="/posts/{{ $post->id }}/dec" method="POST">
+        {{ method_field('PUT') }}
+        @csrf
+        <input onclick="prevPage()" id="btn_next" class="btn btn-outline-secondary" type="submit" value="Prev">
+    </form>
+
+        {{--
+        <form action="/posts/{{ $post->id }}" method="POST">
+            {{ method_field('PUT') }}
+            @csrf
+            <input id="btn_next" class="btn btn-outline-secondary" type="submit" value="Prev">
+        </form>--}}
+        {{--
+        {!!Form::open(['action'=>['CurrentPageController@inc',"next"],'method'=>'PUT','class'=>'float-right'])!!}
+            {{Form::hidden('_method','PUT')}}
+            {{Form::submit('Next',['class'=>'btn btn-outline-secondary'])}}
+        {!!Form::close()!!}
+            Page: <span id="page"></span>
+            {!!Form::open(['action'=>['CurrentPageController@inc',"prev",$post->id],'method'=>'POST','class'=>'float-right'])!!}
+            {{Form::hidden('_method','PUT')}}
+            {{Form::submit('Prev',['class'=>'btn btn-outline-secondary'])}}
+        {!!Form::close()!!} --}}
+
+        {{--
         <a href="javascript:prevPage()" id="btn_prev" class="btn btn-outline-info btn-sm">Prev</a>
         Page: <span id="page"></span>
         <a href="javascript:nextPage()" id="btn_next" class="btn btn-outline-info btn-sm">Next</a>
+        --}}
     </div>
 
     <hr>

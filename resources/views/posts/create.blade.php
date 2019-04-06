@@ -51,12 +51,23 @@
         <div class="form-group row">
             {{Form::label('body','Body',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
-                <textarea id="summernote" name="editordata"></textarea>
+                <textarea id="summernote" name="body"></textarea>
                
                 <!-- {{-- <TODO:> Ck editor not working</TODO:> --}}
                 {{-- {{Form::textarea('body','',['id'=>'article-ckeditor','class'=>'form-control','placeholder'=>'Body'])}} --}}
                 {{-- {{Form::textarea('body','',['class'=>'form-control','placeholder'=>'Body'])}} --}}
                 {{-- <textarea name="editor1"></textarea> --}} -->
+            </div>
+        </div>
+
+        <div class="form-group row">
+            {{Form::label('type','Langauge',['class'=>'col-sm-2 col-form-label'])}}
+            <div class="col-sm-10">
+                <?php echo Form::radio('langauge', 'English')?> English
+                &emsp;&emsp;
+                <?php echo Form::radio('langauge', 'Hindi')?> Hindi
+                &emsp;&emsp;
+                <?php echo Form::radio('langauge', 'Gujarati')?> Gujarati
             </div>
         </div>
 
