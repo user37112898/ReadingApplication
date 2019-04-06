@@ -56,7 +56,10 @@ class PostsController extends Controller
     {
         return view('posts.dashboard');
     }
-
+    public function selfev()
+    {
+        return view('posts.selfevaluation');
+    }
     /**
      * Store a newly created resource in storage.
      *
