@@ -5,11 +5,38 @@
 @endsection
 
 @section('content')
-
-        {{-- <div class="alert alert-success" role="alert" align="center">
-
-			</div> --}}
-
+<div class="container">
+        
+                <h3 style="display:inline-block">Display All Books</h3>
+                <div class="dropdown float-right" style="display:inline-block">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Langauge
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <form action="/postsallpost" method="POST">
+                        {{ method_field('PATCH') }}
+                        @csrf
+                        <input onclick="index()" id="btn_next" class="dropdown-item" type="submit" value="All Langauges">
+                    </form>
+                    <form action="/postsenglish" method="POST">
+                        {{ method_field('PATCH') }}
+                        @csrf
+                        <input onclick="english()" id="btn_next" class="dropdown-item" type="submit" value="English">
+                    </form>
+                    <form action="/postshindi" method="POST">
+                        {{ method_field('PATCH') }}
+                        @csrf
+                        <input onclick="hindi()" id="btn_next" class="dropdown-item" type="submit" value="Hindi">
+                    </form>
+                    <form action="/postsgujarati" method="POST">
+                        {{ method_field('PATCH') }}
+                        @csrf
+                        <input onclick="gujarati    ()" id="btn_next" class="dropdown-item" type="submit" value="Gujarati">
+                    </form>
+                </div>
+                </div>
+			</div>
+			<div class="row">
 				<!--Card Layout Started-->
                 <!--Tile for Book 1 started-->
                 @if (count($posts)>0)

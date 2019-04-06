@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->boolean('evaluation');//
             $table->string('tags');
             $table->integer('user_id');
+            $table->string('langauge');
             $table->timestamps();
         });
     }

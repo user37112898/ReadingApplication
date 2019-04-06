@@ -38,6 +38,25 @@ class PostsController extends Controller
         return view('posts.index')->with('posts',$posts);
     }
 
+    public function english(){
+        $posts = DB::select("SELECT * FROM posts WHERE langauge='english'");
+        // SELECT * FROM Customers WHERE Country='Mexico';
+
+        return view('posts.index')->with('posts',$posts);
+    }
+
+    public function hindi(){
+        $posts = DB::select("SELECT * FROM posts WHERE langauge='hindi'");
+
+        return view('posts.index')->with('posts',$posts);
+    }
+
+    public function gujarati(){
+        $posts = DB::select("SELECT * FROM posts WHERE langauge='gujarati'");
+
+        return view('posts.index')->with('posts',$posts);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -56,6 +75,10 @@ class PostsController extends Controller
     {
         return view('posts.dashboard');
     }
+    public function show1()
+    {
+        return view('posts.show1');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -68,6 +91,8 @@ class PostsController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
+            'description'=>'required',
+            'author'=>'required',
         ]);
 
         $post = new Post;
@@ -77,6 +102,7 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->body = $request->input('body');
         $post->evaluation = $request->input('evaluation');
+        $post->langauge = $request->input('langauge');
 
         $tag = "";
         if($request->input('tag0')==1){
@@ -121,14 +147,26 @@ class PostsController extends Controller
      */
     public function show($id)
     {
+
         $post = Post::find($id);
         $bodyarray = str_split($post->body, 2600);
         $posttags = explode(",",$post->tags);
 
         // return $post;
         $cp=CurrentPage::find($id);
+        $posts = Post::orderBy('created_at','desc')->paginate(10);
 
-        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments,'currentpage'=>$cp]);
+        return view('posts.show')->with(['post'=>$post,'bodyarray'=>$bodyarray,'posttags'=>$posttags,'comments'=>$post->comments,'currentpage'=>$cp,'posts'=>$posts]);
+
+    }
+    public function suggest($id)
+    {
+
+
+        $posts = Post::all();
+
+        return view('posts.suggest')->with('posts',$posts);
+
     }
 
     /**
@@ -171,6 +209,7 @@ class PostsController extends Controller
         $post->type = $request->input('type');
         $post->body = $request->input('body');
         $post->evaluation = $request->input('evaluation');
+        $post->langauge = $request->input('langauge');
 
         $tag = "";
         if($request->input('tag0')==1){
