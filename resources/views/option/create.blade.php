@@ -50,5 +50,7 @@
             </div>
         </div>
     </form>
+
+    <a href="/posts" class="button is-info">Back</a>
   </div>
 </body>

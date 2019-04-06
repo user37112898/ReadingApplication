@@ -124,7 +124,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $bodyarray = str_split($post->body, 2600);
         $posttags = explode(",",$post->tags);
- 
+
         // return $post;
         $cp=CurrentPage::find($id);
 
