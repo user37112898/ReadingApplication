@@ -75,6 +75,10 @@ class PostsController extends Controller
     {
         return view('posts.dashboard');
     }
+    public function show1()
+    {
+        return view('posts.show1');
+    }
 
     /**
      * Store a newly created resource in storage.
