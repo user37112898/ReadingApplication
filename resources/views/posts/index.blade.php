@@ -75,7 +75,7 @@
               </div>
             </div>
             @if (count($posts)>0)
-              <div class="row">
+              <div class="row" style="width: 100%;">
                 @foreach ($posts as $post)
 
                   <div class="col-md-6">

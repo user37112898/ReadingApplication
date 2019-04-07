@@ -139,6 +139,7 @@ Plotly.newPlot('myDiv', data, {}, {showSendToCloud: true});
 									<div class="card-header">Articles</div>
 									<div class="card-body text-info">
 										<h5 class="card-title">Most Efficent Reader</h5>
+										<!-- SELECT userid, COUNT(*) totalcount FROM current_pages WHERE `status`=2, 'userid'=login GROUP BY MONTH('ldate') HAVING COUNT(*)>1 ORDER BY COUNT(*) DESC -->
 										<h1>User Name</h1>
 									</div>
 								</div>
