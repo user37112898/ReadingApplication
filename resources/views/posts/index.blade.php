@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container">
-        
+
                 <h3 style="display:inline-block">Display All Books</h3>
                 <div class="dropdown float-right" style="display:inline-block">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -36,7 +36,7 @@
                 </div>
                 </div>
 			</div>
-			<div class="row">
+
 				<!--Card Layout Started-->
                 <!--Tile for Book 1 started-->
                 @if (count($posts)>0)
