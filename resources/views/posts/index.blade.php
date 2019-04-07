@@ -35,15 +35,11 @@
                     </form>
                 </div>
                 </div>
-			</div>
-
-				<!--Card Layout Started-->
-                <!--Tile for Book 1 started-->
                 @if (count($posts)>0)
-                  <div class="columns">
+                  <div class="row">
                     @foreach ($posts as $post)
 
-                      <div class="column">
+                      <div class="col-md-6">
                         <div class="notification text-center" style="margin:10px 10px 10px 0; border-radius: 5px;
                         background-color: #022c43; opacity: .95; color: #fff;" >
                             <?php
@@ -73,7 +69,7 @@
                                 @endif
 
                             </div>
-                            <div class="card-footer text-muted" >
+                            <div class=" text-muted" >
                                 {{$post->created_at}}
                                 @if ($post->evaluation)
                                   <a href="/create/{{$post->id}}/questions" class="button is-success" style="float:right;" >Add Questions</a>
@@ -89,6 +85,11 @@
                         Oops! no posts available
                     </h3>
                 @endif
+			</div>
+
+				<!--Card Layout Started-->
+                <!--Tile for Book 1 started-->
+
 
 				<!--to here.-->
 
