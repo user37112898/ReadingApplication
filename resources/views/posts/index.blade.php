@@ -93,7 +93,7 @@
 
                             @if (Auth::user()->isadmin==0)
                             <a href="/posts/{{$post->id}}" class="button is-success" style="margin-right: 5px;">Read</a>
-                                <a href="#" class="button is-info" style="margin-right: 5px;">Give Exam</a>
+                                <a href="/exam/{{$post->id}}" class="button is-info" style="margin-right: 5px;">Give Exam</a>
                             @else
                                 <div class="d-flex justify-content-center">
                                     <a href="/posts/{{$post->id}}" class="button is-success" style="margin-right: 5px;">Read</a>
@@ -109,7 +109,7 @@
                         </div>
                         <div class=" text-muted" >
                             {{$post->created_at}}
-                            @if ($post->evaluation)
+                            @if ($post->evaluation && Auth::user()->isadmin==1)
                               <a href="/create/{{$post->id}}/questions" class="button is-success" style="float:right;" >Add Questions</a>
                             @endif
                         </div>
