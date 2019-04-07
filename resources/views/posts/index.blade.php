@@ -99,7 +99,7 @@
                                         <a href="/posts/{{$post->id}}/edit" class="button is-info" style="margin-right: 5px;">Edit</a>
 
                                         {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST'])!!}
-                                            {{Form::hidden('_method','PATCH')}}
+                                            {{Form::hidden('_method','DELETE')}}
                                             {{Form::submit('Delete',['class'=>'button is-danger'])}}
                                         {!!Form::close()!!}
                                     </div>
