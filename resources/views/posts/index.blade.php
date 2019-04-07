@@ -6,7 +6,8 @@
 
 @section('content')
 <div class="container">
-
+        <div role="alert" align="center">
+        {{-- <div class="alert alert-success" role="alert" align="center"> --}}
                 {{-- Filters --}}
                 <div class="float-right">
                 {{-- TagFilter --}}

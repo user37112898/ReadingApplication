@@ -2,9 +2,6 @@
     var current_page = 1;
     var records_per_page = 1;
 
-var s = <?php echo json_encode($bodyarray); ?>;
-
-var objJson = <?php echo json_encode($bodyarray); ?>; // Can be obtained from another source, such as your objJson variable
 
 // console.log(s);
 
@@ -78,15 +75,15 @@ window.onload = function() {
     <a href="/posts" class="btn btn-outline-dark" role="button">Go Back</a>
     <div><br></div>
     <div class="alert alert-primary" role="alert">
-        <h1>{{$post->title}}</h1>
-        <p class="h4">{{$post->description}}</p>
+        <h1>Title</h1>
+        <p class="h4">Description</p>
     </div>
 
     <hr>
     {{-- not parsing it as html (we want it because editor gives us html)
-    <div>{{$post->body}}</div> --}}
+    <div>Body</div> --}}
     
-    {{-- <div>{!!$post->body!!}</div> This syntax will parse the body --}}
+    {{-- <div>Body</div> This syntax will parse the body --}}
     <div class="jumbotron">
         <p id="listingTable" width="100px"></p>
     
@@ -98,51 +95,36 @@ window.onload = function() {
     <hr>
     <div>
         <span style="font-size:20px;font-weight:500;padding-right:10px">Tags</span>
-        @foreach($posttags as $tag)
-            <span class="badge badge-info" style="font-size:12px;vertical-align:middle">{{$tag}}</span>
-        @endforeach  
+       
+            <span class="badge badge-info" style="font-size:12px;vertical-align:middle">Tag</span>
+         
     </div>
 
     <hr>
-        <?php 
-            $createdByName = is_object($post->user)? $post->user->name : 'Deleted Admin';
-        ?>
-        <small>Written on {{$post->created_at}} by {{$createdByName}}</small>
-    <hr>
-    @if (!Auth::guest())        
-        @if (Auth::user()->id == $post->user_id)        
-            <a href="/posts/{{$post->id}}/edit" class="btn btn-outline-success">Edit</a>
-            {!!Form::open(['action'=>['PostsController@destroy',$post->id],'method'=>'POST','class'=>'float-right'])!!}
-                {{Form::hidden('_method','DELETE')}}
-                {{Form::submit('Delete',['class'=>'btn btn-outline-danger'])}}
-            {!!Form::close()!!}
-        @endif
-    @endif
-
+       
+        <small>Written on date by poppy</small>
+    
+    
     <hr>
     <div class="jumbotron">
-    
+    <!-- Write Your code here poppy -->
+    <div class="suggestions">
+       <h1></h1>
+    </div>
     <h2>Comments</h2>
-    @if (count($comments)>0)
-    @foreach($comments as $comment)
         <div class="alert alert-light" style="padding-bottom:25px">
-            <div>{{$comment->comment}}</div>
+            <div>Commment</div>
             <div class="float-right">
-                <small style="display: inline-block;color:rgb(90,80,70)">{{$comment->username}}</small>
-                <small>{{$comment->created_at}}</small>
+                <small style="display: inline-block;color:rgb(90,80,70)">comment</small>
+                <small>Comment</small>
             </div>
         </div>
-    @endforeach 
-    @else
     <div class="alert alert-secondary">No Comments</div>
-    @endif
-    {!!Form::open(['route'=>['comments.store',$post->id],'method'=>'POST'])!!}
     <div>
         <div class="form-group row">            
             <div class="col-sm-10" style="display: inline-block">
-                {{Form::text('comment','',['class'=>'form-control','placeholder'=>'Add Comment'])}}
-            </div>
-            {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
+                <input type="text"></div>
+            <button class="btn btn-primary"> Add Comment</button>
         </div>
     </div>
     {!!Form::close()!!}
