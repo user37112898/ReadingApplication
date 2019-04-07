@@ -40,25 +40,25 @@ class PostsController extends Controller
 
     public function technology(){
         $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Technology%'");
-        
+
         return view('posts.index')->with('posts',$posts);
     }
 
     public function business(){
         $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Business%'");
-        
+
         return view('posts.index')->with('posts',$posts);
     }
 
     public function company(){
         $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Company%'");
-        
+
         return view('posts.index')->with('posts',$posts);
     }
 
     public function innovation(){
         $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Innovation%'");
-        
+
         return view('posts.index')->with('posts',$posts);
     }
 
@@ -297,7 +297,13 @@ class PostsController extends Controller
       $reader = DB::select('select userid, count(*) totalcount from current_pages where `status`=? group by userid having count(*)>? ORDER BY COUNT(*) DESC LIMIT ?',[2,1,1]);
       //dd($reader[0]->userid);
 
-      $readerName = User::find($reader[0]->userid);
+      if (count($reader)) {
+        $readerName = User::find($reader[0]->userid);
+        $name = $readerName->name;
+      }
+      else {
+        $name = '';
+      }
       //dd($readerName->name);
 
       $result = [
@@ -306,7 +312,7 @@ class PostsController extends Controller
         'articles' => sizeof($articles),
         'status1' => sizeof($status1),
         'status3' => sizeof($status3),
-        'readerName' => $readerName->name
+        'readerName' => $name
       ];
       return view('posts.dashboard', compact('result'));
 
