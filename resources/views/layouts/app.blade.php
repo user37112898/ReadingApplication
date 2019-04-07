@@ -38,7 +38,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-light navbar-laravel" style="background-color: #87c0cd;">
             <div class="container">
                 <?php
                     $link = (Auth::user())?'/posts':'/login';

@@ -11,7 +11,7 @@
   <script>
     <!-- JAVASCRIPT CODE GOES HERE -->
   </script>
-	<div id="myDiv2"><!-- Plotly chart will be drawn inside this DIV --></div>
+	<!--<div id="myDiv2"><!-- Plotly chart will be drawn inside this DIV --></div>-->
 	<script>var data = [{
   values: [34,26,40],
   labels: ['Completed', 'Pending', 'Test Given'],
@@ -26,8 +26,8 @@ var layout = {
   title: 'Employee Analysis',
   grid: {rows: 1, columns: 2},
   showlegend: false
- 
-  
+
+
 };
 
 Plotly.newPlot('myDiv2', data, layout, {showSendToCloud:true});</script>

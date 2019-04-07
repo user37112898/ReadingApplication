@@ -80,7 +80,7 @@
 
                   <div class="col-md-6">
                     <div class="notification text-center" style="margin:10px 10px 10px 0; border-radius: 5px;
-                    background-color: #022c43; opacity: .95; color: #fff;" >
+                    background-image: linear-gradient(to right, #0F2027, #203A43, #2C5364); opacity: .95; color: #fff;" >
                         <?php
                             $type = $post->type==1?'Book':'Article';
                         ?>
