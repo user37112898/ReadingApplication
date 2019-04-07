@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use App\Post;
+use App\Currentpage;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -48,6 +51,19 @@ class RegisterController extends Controller
         //below line is commented to prevent auto login
         // $this->guard()->login($user);  
         $addeduser = $user->name;
+        $allposts = POST::all();
+        foreach ($allposts as $post) {
+            $cp = new CurrentPage;
+            $cp->currentpage=1;
+            $cp->userid=$user->id;
+            $cp->postid=$post->id;
+            $cp->status=0;
+            $cp->ldate=Carbon::now()->format('Y-m-d');
+            $cp->sdate=Carbon::now()->format('Y-m-d');
+            $cp->result=0;
+            $cp->save();
+        }
+
         return $this->registered($request, $user) ?: redirect($this->redirectPath())->with('success',$addeduser.' is added');
     }
 

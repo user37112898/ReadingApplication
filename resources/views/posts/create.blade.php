@@ -61,6 +61,17 @@
         </div>
 
         <div class="form-group row">
+            {{Form::label('type','Langauge',['class'=>'col-sm-2 col-form-label'])}}
+            <div class="col-sm-10">
+                <?php echo Form::radio('langauge', 'English')?> English
+                &emsp;&emsp;
+                <?php echo Form::radio('langauge', 'Hindi')?> Hindi
+                &emsp;&emsp;
+                <?php echo Form::radio('langauge', 'Gujarati')?> Gujarati
+            </div>
+        </div>
+
+        <div class="form-group row">
             {{Form::label('evaluation questions','Evaluation Questions',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10 form-control'">
                 <?php echo Form::radio('evaluation', '1')?> Yes

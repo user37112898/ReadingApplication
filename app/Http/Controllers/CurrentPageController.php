@@ -15,6 +15,7 @@ class CurrentPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $cp=CurrentPage::all();
@@ -25,6 +26,38 @@ class CurrentPageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function inc($id){
+        $cp=CurrentPage::find($id);
+        // dd($id);
+        // $cp = auth()->user()->id;
+        $post=POST::find($id);
+        $cp->userid=auth()->user()->id;
+        $cp->postid=$id;
+        if($cp->currentpage < count(str_split($post->body, 2600))){
+            $cp->currentpage++;
+        }
+        $cp->save();
+        // dd("heuyyy");
+        // dd($task);
+        return redirect()->route('posts.show',[$id]);
+    }
+
+    public function dec($id){
+        $cp=CurrentPage::find($id);
+        // dd($id);
+        // $cp = auth()->user()->id;
+        $cp->userid=auth()->user()->id;
+        $cp->postid=$id;
+        if($cp->currentpage>0){
+            $cp->currentpage--;
+        }
+        $cp->save();
+        // dd("heuyyy");
+        // dd($task);
+        return redirect()->route('posts.show',[$id]);
+    }
+
     public function create()
     {
         //
@@ -55,7 +88,6 @@ class CurrentPageController extends Controller
         $cp = new CurrentPage;
         $cp->userid=auth()->user()->id;
         $cp->postid=$post->id;
-        $cp->currentpage=4;
         $cp->status=1;
         $cp->save();
     }
@@ -89,14 +121,18 @@ class CurrentPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $task)
     {
         //
-        $cp=CurrentPage::find($id);
-        $cp->userid=auth()->user()->id;
-        $cp->postid=$post->id;
-        $cp->currentpage=current_page;
-        $cp->save();
+        // $cp=CurrentPage::find($id);
+        // dd($id);
+        // $cp = auth()->user()->id;
+        // $cp->userid=auth()->user()->id;
+        // $cp->postid=$post->id;
+        // $cp->currentpage=current_page;
+        // $cp->save();
+        // dd($task);
+        return redirect()->route('posts.show',[$post->id]);
     }
 
     /**

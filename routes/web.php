@@ -25,9 +25,7 @@ Route::get('/app', function () {
 Route::get('/contactus', function () {
     return view('posts.contactus');
 });
-Route::get('/dashboard', function () {
-    return view('posts.dashboard');
-});
+Route::get('/dashboard','PostsController@dash');
 
 Auth::routes();
 
@@ -35,14 +33,22 @@ Auth::routes();
 
 Route::resource('users','UsersController');
 Route::resource('posts','PostsController');
-// Route::resource('comments','CommentController');
+Route::resource('currentpage','CurrentPageController');
 Auth::routes();
 
 Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::patch('/posts/{post}/inc', 'CurrentPageController@inc');
+Route::put('/posts/{post}/dec', 'CurrentPageController@dec');
 
+// Route::get('/currentpagecontroller/{post_id}', 'CurrentPageController@inc');
+
+
+// Route::put('currentpage/{post_id}', ['uses' => 'CurrentPageController@inc', 'as' => 'currentpage.inc']);
+
+// Route::patch('currentpage/{post_id}', ['uses' => 'CurrentPageController@dec', 'as' => 'currentpage.dec']);
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
@@ -64,4 +70,3 @@ Route::post('exam/{post}', 'ExamsController@store');
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
-
