@@ -1,13 +1,17 @@
 @extends('layouts.app')
 
 @section('header-text')
-  <h1 style="text-align:center; margin-bottom: 20px; font-size: 28px;">Display All Books</h1>
+  <h1 style="text-align:center; margin-bottom: 20px; font-size: 28px; " class="alert alert-success container" >Display All Books</h1>
 @endsection
 
 @section('content')
 <div class="container">
+<<<<<<< HEAD
+        <div role="alert" align="center">
+=======
         {{-- <div class="alert alert-success" role="alert" align="center"> --}}
                 <h3 style="display:inline-block">Display All Books</h3>
+>>>>>>> d07150a04c3685ad2debaff6fee0e6b3d057d693
                 {{-- Filters --}}
                 <div class="float-right">
                 {{-- TagFilter --}}
