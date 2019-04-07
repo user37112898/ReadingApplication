@@ -37,6 +37,12 @@ class CurrentPageController extends Controller
         if($cp->currentpage < count(str_split($post->body, 2600))){
             $cp->currentpage++;
         }
+        if($cp->status==0){
+            $cp->status=1;
+        }
+        if(($cp->status==1) && ($cp->currentpage==count(str_split($post->body, 2600)))){
+            $cp->status=2;
+        }
         $cp->save();
         // dd("heuyyy");
         // dd($task);

@@ -25,6 +25,9 @@ Route::get('/app', function () {
 Route::get('/contactus', function () {
     return view('posts.contactus');
 });
+Route::get('/selfev', function () {
+    return view('posts.selfevaluation');
+});
 Route::get('/dashboard','PostsController@dash');
 
 Auth::routes();
@@ -42,6 +45,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::patch('/posts/{post}/inc', 'CurrentPageController@inc');
 Route::put('/posts/{post}/dec', 'CurrentPageController@dec');
+
+Route::patch('/postsallpost', 'PostsController@index');
+Route::patch('/postsenglish', 'PostsController@english');
+Route::patch('/postshindi', 'PostsController@hindi');
+Route::patch('/postsgujarati', 'PostsController@gujarati');
+
+Route::patch('/postsalltags', 'PostsController@index');
+Route::patch('/poststechnology', 'PostsController@technology');
+Route::patch('/postsbusiness', 'PostsController@business');
+Route::patch('/postscompany', 'PostsController@company');
+Route::patch('/postsinnovation', 'PostsController@innovation');
 
 // Route::get('/currentpagecontroller/{post_id}', 'CurrentPageController@inc');
 

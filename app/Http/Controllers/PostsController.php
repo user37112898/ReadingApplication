@@ -38,6 +38,30 @@ class PostsController extends Controller
         return view('posts.index')->with('posts',$posts);
     }
 
+    public function technology(){
+        $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Technology%'");
+        
+        return view('posts.index')->with('posts',$posts);
+    }
+
+    public function business(){
+        $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Business%'");
+        
+        return view('posts.index')->with('posts',$posts);
+    }
+
+    public function company(){
+        $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Company%'");
+        
+        return view('posts.index')->with('posts',$posts);
+    }
+
+    public function innovation(){
+        $posts = DB::select("SELECT * FROM posts WHERE tags LIKE '%Innovation%'");
+        
+        return view('posts.index')->with('posts',$posts);
+    }
+
     public function english(){
         $posts = DB::select("SELECT * FROM posts WHERE langauge='english'");
         // SELECT * FROM Customers WHERE Country='Mexico';
@@ -74,6 +98,10 @@ class PostsController extends Controller
     public function dashboard()
     {
         return view('posts.dashboard');
+    }
+    public function selfev()
+    {
+        return view('posts.selfevaluation');
     }
     public function show1()
     {

@@ -47,8 +47,23 @@
                 <?php echo Form::radio('type', '0')?> Article
             </div>
         </div>
+        <input type="radio" name="inputtype" value="filetype">Hey
+        <input type="radio" name="inputtype" value="texttype">Hey1
+        <input type="file" name='myFile' id='fileupload' style="visibility: hidden;">
+        <script type="text/javascript">
+                var typeoffile=document.getElementByName('inputtype');
+                var fileupload=document.getElementById('fileupload');
+                typeoffile = typeoffile.value;
+                if(typeoffile==='filetype')
+                {
+                    document.getElementById("fileupload").style.visibility = "visible";
+                    fileupload.type='file';
+                }
+                
+        </script>
 
         <div class="form-group row">
+            
             {{Form::label('body','Body',['class'=>'col-sm-2 col-form-label'])}}
             <div class="col-sm-10">
                 <textarea id="summernote" name="body"></textarea>
