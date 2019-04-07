@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="columns">
-      <div class="column" style="width: 50%;">
+      <div class="column">
         <div class="card" style="background-color: #022c43; color: #fff; opacity: .95;">
           <div class="card-content">
             <div class="title" style="color: #fff;">Login</div>
