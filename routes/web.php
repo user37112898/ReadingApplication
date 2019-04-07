@@ -36,7 +36,7 @@ Auth::routes();
 
 Route::resource('users','UsersController');
 Route::resource('posts','PostsController');
-// Route::resource('comments','CommentController');
+Route::resource('currentpage','CurrentPageController');
 Auth::routes();
 
 Route::post('comments/{post_id}', ['uses' => 'CommentController@store', 'as' => 'comments.store']);
@@ -60,11 +60,12 @@ Route::patch('/postsinnovation', 'PostsController@innovation');
 // Route::get('/currentpagecontroller/{post_id}', 'CurrentPageController@inc');
 
 
+// Route::put('currentpage/{post_id}', ['uses' => 'CurrentPageController@inc', 'as' => 'currentpage.inc']);
 
+// Route::patch('currentpage/{post_id}', ['uses' => 'CurrentPageController@dec', 'as' => 'currentpage.dec']);
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
-
 
 //Add Question Route
 Route::get('/create/{post}/questions', 'QuestionsController@index');
@@ -83,6 +84,3 @@ Route::post('exam/{post}', 'ExamsController@store');
 
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@store','as' => 'cps.store']);
 Route::post('cps/{postid}',['uses'=>'CurrentPageController@update','as' => 'cps.update']);
-
-// Route::get('sendmail','ForgotPasswordController@sent_mail');
-

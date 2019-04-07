@@ -8,20 +8,29 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Jyoti CNC') }}</title>
-    
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    {{-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"> --}}
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.css">
+
+    <style>
+      * {
+        font-family: 'Ubuntu', sans-serif;
+
+      }
+    </style>
 
 
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 
     <!-- include summernote css/js -->
 
@@ -31,7 +40,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <?php 
+                <?php
                     $link = (Auth::user())?'/posts':'/login';
                 ?>
                 <a href="{{ url ($link) }}"  style="padding-right: 20px">
@@ -70,10 +79,10 @@
                             @if (Auth::user()->isadmin==1)
                                 <li class="nav-item">
                                     <a href="/users" class="nav-link">Users</a>
-                                </li>    
+                                </li>
                                 <li class="nav-item">
                                     <a href="/posts/create" class="nav-link">Create Post</a>
-                                </li>    
+                                </li>
                                 <li class="nav-item">
                                     <a href="/register" class="nav-link">Register</a>
                                 </li>
@@ -101,8 +110,9 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            <div class="container">
+        <main class="py-4" style="background-color: #fff; height: 100vh;">
+            @yield('header-text')
+            <div class="container" style="  border-radius: 10px;">
                 @include('include.messages')
                 @yield('content')
             </div>
